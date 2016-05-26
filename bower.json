@@ -1,0 +1,21 @@
+{
+  "name": "barada",
+  "description": "barada",
+  "main": "",
+  "authors": [
+    "changgyun.woo <cg25.woo@samsung.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/changgyun/barada",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reset-css": "~2.0.2011012603"
+  }
+}

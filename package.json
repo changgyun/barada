@@ -1,0 +1,23 @@
+{
+  "name": "barada",
+  "version": "1.0.0",
+  "description": "barada",
+  "scripts": {
+    "start": "",
+    "test": "gulp default"
+  },
+  "author": "",
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "browser-sync": "^2.11.2",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-flatten": "^0.2.0",
+    "gulp-main-bower-files": "^1.3.1",
+    "gulp-sass": "^2.2.0",
+    "platform": "^1.3.1"
+  }
+}
