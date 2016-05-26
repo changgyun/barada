@@ -1,0 +1,200 @@
+////
+/// button
+////
+
+$button-padding: 5px 6px !default;
+$button-margin: 0 0 0 0 !default;
+$button-fill: solid !default;
+$button-background: $primary-color !default;
+$button-background-hover: scale-color($button-background, $lightness: -15%) !default;
+$button-color: #fff !default;
+$button-color-alt: #000 !default;
+$button-radius: $global-radius !default;
+$button-sizes: (
+        small: 1.0rem,
+        default: 1.0rem,
+) !default;
+$button-opacity-disabled: 0.4 !default;
+@if $global-text-direction == 'rtl' {
+  $button-margin: 0 0 $global-margin $global-margin !default;
+}
+
+@mixin button-base {
+  @include disable-mouse-outline;
+  display: inline-block;
+  text-align: center;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: $button-radius;
+  padding: $button-padding;
+  margin: $button-margin;
+  font-size: map-get($button-sizes, default);
+  font-weight: $global-weight-bold;
+}
+
+@mixin button-expand($expand: true) {
+  @if $expand {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @else {
+    display: inline-block;
+    width: auto;
+    margin: $button-margin;
+  }
+}
+
+@mixin button-style(
+$background: $button-background,
+$background-hover: $button-background-hover,
+$color: $button-color
+) {
+
+  background-color: $background;
+  color: $color;
+
+  &:hover, &:focus {
+    background-color: $background-hover;
+    color: $color;
+    outline: 0;
+  }
+}
+
+@mixin button-default-style(
+$background: $button-background,
+$background-hover: $button-background-hover,
+$color: $button-color
+) {
+
+  background-color: $background;
+  color: #5d656b;
+  border: 1px #5d656b solid;
+
+  &:hover, &:focus {
+    background-color: #e9f5fd;
+    color: #5d656b!important;
+    border: 1px #000 solid;
+  }
+  &:active {
+    background-color: #e9f5fd;
+    color: #5d656b;
+    border: 1px #5d656b solid;
+  }
+  &.active {
+    background-color: #e2eaef;
+    color: #1c85c5;
+    border: 1px #03afef solid;
+    box-shadow: inset 1px 1px 8px rgba(196,209,214,0.8);
+  }
+}
+
+@mixin button-disabled {
+  opacity: $button-opacity-disabled;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@mixin button(
+$expand: false,
+$background: $button-background,
+$background-hover: $button-background-hover,
+$color: $button-color,
+$style: $button-fill
+) {
+  @include button-base;
+
+  @if $style == solid {
+    @include button-style($background, $background-hover, $color);
+  }
+  @else if $style == hollow {
+    @include button-hollow;
+    @include button-hollow-style($background);
+  }
+
+  @if $expand {
+    @include button-expand;
+  }
+}
+
+@mixin barada-button {
+
+  .button {
+    @include button;
+
+    // Sizes
+    &.small    { font-size: map-get($button-sizes, small); padding: 2px 10px}
+    &.large    { font-size: map-get($button-sizes, large); }
+    &.expanded { @include button-expand; }
+    &.iconbtn {padding: 0.45em 0.6em;}
+
+    // Colors
+    @each $name, $color in $set-colors {
+      @if $button-fill != hollow {
+        &.#{$name} {
+          @if $name == default {
+            @include button-default-style($white-color, auto);
+          } @else {
+            @include button-style($color, auto);
+          }
+        }
+      }
+      @else {
+        &.#{$name} {
+          @include button-hollow-style($color);
+        }
+
+        &.#{$name}.dropdown::after {
+          border-top-color: $color;
+        }
+      }
+    }
+
+    // Colors hover
+    @each $name, $color in $set-hover-colors {
+      @if $button-fill != hollow {
+        &.#{$name}:hover {
+          @include button-style($color, auto);
+        }
+      }
+    }
+
+    // Colors active
+    @each $name, $color in $set-active-colors {
+      @if $button-fill != hollow {
+        &.#{$name}:active {
+          @include button-style($color, auto);
+          outline: 0;
+          box-shadow:inset 0 0 7px rgba(0,0,0,0.2);
+        }
+      }
+    }
+
+    // Hollow style
+    @if $button-fill != hollow {
+      &.hollow {
+        @include button-hollow;
+        @include button-hollow-style;
+
+        @each $name, $color in $set-colors {
+          &.#{$name} {
+            @include button-hollow-style($color);
+          }
+        }
+      }
+    }
+
+    // Disabled style
+    &.disabled,
+    &[disabled] {
+      @include button-disabled;
+    }
+  }
+}
+
+@include barada-button;

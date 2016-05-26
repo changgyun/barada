@@ -1,0 +1,146 @@
+////
+/// tabs
+////
+
+$tab-font-size: 12px !default;
+$tab-margin: 0 !default;
+$tab-background: $white !default;
+$tab-color-active: $white !default;
+$tab-color: #7097af !default;
+$tab-color-hover: #4e7891 !default;
+$tab-item-background: #e7ebee !default;
+$tab-background-active: #869ca9 !default;
+$tab-border: $light-gray !default;
+$tab-item-color: foreground(#e7ebee, $primary-color) !default;
+$tab-item-background-hover: #cfd7dd !default;
+$tab-item-padding: .6rem 1.3rem !default;
+$tab-expand-max: 6 !default;
+$tab-content-background: $white !default;
+$tab-content-border: #869ca9 !default;
+$tab-content-color: foreground($tab-background, $primary-color) !default;
+$tab-content-padding: 1rem !default;
+
+@mixin tabs-container {
+  @include clearfix;
+  margin: $tab-margin;
+  list-style-type: none;
+  background: $tab-background;
+  border-bottom: 1px solid $tab-content-border;
+  padding: 0;
+  font-size: $tab-font-size;
+}
+
+@mixin tabs-container-vertical {
+  > li {
+    width: auto;
+    float: none;
+    display: block;
+  }
+}
+
+@mixin tabs-title {
+  float: #{$global-left};
+  margin-left: 2px;
+  &:first-child  {
+    margin: 0;
+  }
+  > a {
+    display: block;
+    padding: $tab-item-padding;
+    line-height: 1;
+    color: $tab-color;
+    background: $tab-item-background;
+    text-decoration: none;
+    font-weight: $global-weight-bold;
+
+    &:hover {
+      background: $tab-item-background-hover;
+      color: $tab-color-hover;
+      text-decoration: none;
+    }
+
+    &:focus,
+    &[aria-selected='true'] {
+      background: $tab-background-active;
+      color: $tab-color-active;
+      text-decoration: none;
+      outline: 0;
+    }
+  }
+}
+
+@mixin tabs-content {
+  background: $tab-content-background;
+  transition: all 0.5s ease;
+  border: 1px solid $tab-content-border;
+  border-top: 0;
+}
+
+@mixin tabs-content-vertical {
+  border: 1px solid $tab-content-border;
+  border-#{$global-left}: 0;
+}
+
+@mixin tabs-panel {
+  display: none;
+  padding: $tab-content-padding;
+
+  &.active {
+    display: block;
+  }
+}
+
+
+@mixin suf-tabs {
+  .tabs {
+    @include tabs-container;
+  }
+
+  // Vertical
+  .tabs.vertical {
+    @include tabs-container-vertical;
+  }
+
+  // Simple
+  .tabs.simple {
+    > li > a {
+      padding: 0;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+
+  // Primary color
+  .tabs.primary {
+    background: $primary-color;
+
+    > li > a {
+      color: foreground($primary-color);
+
+      &:hover,
+      &:focus {
+        background: smart-scale($primary-color);
+      }
+    }
+  }
+
+  .tabs-title {
+    @include tabs-title;
+  }
+
+  .tabs-content {
+    @include tabs-content;
+  }
+
+  .tabs-content.vertical {
+    @include tabs-content-vertical;
+  }
+
+  .tabs-panel {
+    @include tabs-panel;
+  }
+}
+
+@include suf-tabs;

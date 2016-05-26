@@ -1,0 +1,24 @@
+////
+/// color
+////
+
+
+@function foreground($color, $yes: $black, $no: $white, $threshold: 60%) {
+  @if $color == transparent {
+    $color: $body-background;
+  }
+  @if (lightness($color) > $threshold) {
+    @return $yes;
+  }
+  @else {
+    @return $no;
+  }
+}
+
+
+@function smart-scale($color, $scale: 5%, $threshold: 40%) {
+  @if lightness($color) > $threshold {
+    $scale: -$scale;
+  }
+  @return scale-color($color, $lightness: $scale);
+}

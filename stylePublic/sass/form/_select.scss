@@ -1,0 +1,80 @@
+////
+/// @group select
+////
+
+$select-background: $white !default;
+$select-triangle-color: #333 !default;
+$select-radius: $global-radius !default;
+
+$select-hover-background: #2ca1e9 !default;
+$select-active-background: #156fa5 !default;
+
+@mixin background-triangle($color: $black) {
+  $rgb: 'rgb%28#{red($color)}, #{green($color)}, #{blue($color)}%29';
+
+  background-image: url('resource/svg/dropdown.svg');
+}
+
+@mixin form-select {
+  $height: ($input-font-size + ($form-spacing * 1.3));
+
+  height: $height;
+  padding: ($form-spacing / 5) ($form-spacing / 3);
+  border: $input-border;
+  margin: 0 0 $form-spacing;
+  font-size: $input-font-size;
+  font-family: $input-font-family;
+  line-height: normal;
+  color: $white;
+  background-color: $primary-color;
+  border-radius: $select-radius;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  font-weight: $global-weight-bold;
+  transition: all .2s;
+
+  &:hover {
+    background-color: $select-hover-background;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:active {
+    background-color: $select-active-background;
+    box-shadow:inset 0 0 7px rgba(0,0,0,0.2);
+  }
+
+  option {
+    background: #fff;
+    color: #496070;
+    font-weight: $global-weight-bold;
+  }
+
+  @if $select-triangle-color != transparent {
+    @include background-triangle($select-triangle-color);
+    background-size: 9px 9px;
+    background-position: $global-right ($form-spacing / 2) center;
+    background-repeat: no-repeat;
+  }
+  // Disabled state
+  &:disabled {
+    opacity: .4;
+    pointer-events: none;
+  }
+
+  // Hide the dropdown arrow shown in newer IE versions
+  &::-ms-expand {
+    display: none;
+  }
+
+  &[multiple] {
+    height: auto;
+  }
+}
+
+select {
+  @include form-select;
+}

@@ -1,0 +1,157 @@
+////
+///  forms
+////
+
+$input-prefix-color: $black !default;
+$input-prefix-background: $light-gray !default;
+$input-prefix-border: 1px solid $medium-gray !default;
+$input-prefix-padding: 1rem !default;
+
+@mixin suf-form-prepostfix {
+  $height: ($input-font-size + $form-spacing * 1.285);
+
+
+  .input-group {
+    display: flex;
+    width: 100%;
+    //margin-bottom: 15px;
+    &.topmar {
+      margin-top: 10px;
+    }
+    &.topmar20 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    &.mar0 {
+      margin: 0;
+    }
+    &.backim {
+      background-color: #e1e7ec;
+      padding: 10px;
+      .button {
+        height: 25px;
+      }
+    }
+    &:after {
+      display: block;
+      content: '';
+    }
+    &.left {
+      max-width: 50%;
+      justify-content: flex-start;
+    }
+    &.right {
+      justify-content: flex-end;
+    }
+
+    > :first-child {
+      margin-left: 0;
+    }
+
+    > :last-child {
+      > * {
+      }
+    }
+  }
+
+  %input-group-child {
+    margin: 0;
+    vertical-align: middle;
+  }
+
+  .input-group-label {
+    @extend %input-group-child;
+    text-align: center;
+    width: 1%;
+    height: 100%;
+    padding: 0 $input-prefix-padding;
+    background: $input-prefix-background;
+    color: $input-prefix-color;
+    border: $input-prefix-border;
+
+    @if has-value($input-prefix-border) {
+      &:first-child {
+        border-#{$global-right}: 0;
+      }
+
+      &:last-child {
+        border-#{$global-left}: 0;
+      }
+    }
+  }
+
+  .input-group-filter {
+    margin-left: 8px;
+    margin: 0;
+    vertical-align: middle;
+    display: flex;
+    > :first-child {
+      margin-left: 0;
+    }
+  }
+
+  .input-group-field {
+    @extend %input-group-child;
+    //border-radius: 0;
+    height: $height;
+    margin-left: 8px;
+    box-sizing: border-box;
+    &.small {height: 25px;}
+    ~ .button {
+      margin-left: 8px;
+    }
+  }
+
+  .input-group-select {
+    @extend %input-group-child;
+    margin-left: 8px;
+    height: $height;
+    white-space: nowrap;
+  }
+
+  .input-group {
+    .button {
+      & ~ .button {
+        margin-left: 8px;
+      }
+      & ~ .iconbtn {
+        margin-left: 0;
+      }
+    }
+  }
+  .input-group-select {
+    &:empty ~ .button {
+      margin-left: 0px;
+    }
+    & ~ .button {
+      margin-left: 8px;
+    }
+  }
+
+  table {
+    .button, .input-group-select{
+      margin-left: 0;
+    }
+  }
+
+  .input-group-text {
+    @extend %input-group-child;
+    padding: 5px 0 0 15px;
+  }
+
+  .input-group-button {
+    @extend %input-group-child;
+    height: $height;
+    white-space: nowrap;
+    a,
+    input,
+    button {
+      margin: 0;
+    }
+    button + button {
+      margin-left: 8px;
+    }
+  }
+}
+
+@include suf-form-prepostfix;

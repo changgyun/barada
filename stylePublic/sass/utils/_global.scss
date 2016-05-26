@@ -1,0 +1,75 @@
+////
+/// @Global
+////
+
+$global-font-size: 12px !default;
+$global-margin: 1rem !default;
+$global-padding: 1rem !default;
+$global-weight-normal: normal !default;
+$global-weight-bold: 700 !default;
+$global-radius: 0.3rem !default;
+$global-text-direction: ltr !default;
+$global-left: if($global-text-direction == rtl, right, left);
+$global-right: if($global-text-direction == rtl, left, right);
+$global-lineheight: 1.5 !default;
+
+$secondary-color: #1c85c5 !default;
+$primary-color: #03afef !default;
+$success-color: #00ca9d !default;
+$warning-color: #ffba00 !default;
+$alert-color: #ff2a8a !default;
+$white-color: #fefefe !default;
+
+$secondary-hover-color: #2ca1e9 !default;
+$primary-hover-color: #29c5ff !default;
+$success-hover-color: #00e6b3 !default;
+$warning-hover-color: #ffce4a !default;
+$alert-hover-color: #ff72b2 !default;
+$white-hover-color: #e9f5fd !default;
+
+$secondary-active-color: #156fa5 !default;
+$primary-active-color: #0598cf !default;
+$success-active-color: #00b089 !default;
+$warning-active-color: #f3a000 !default;
+$alert-active-color: #e50b6d !default;
+$white-active-color: #c6d5e0 !default;
+
+$light-gray: #e6e6e6 !default;
+$medium-gray: #cacaca !default;
+$dark-gray: #8a8a8a !default;
+$black: #0a0a0a !default;
+$white: #fefefe !default;
+
+$body-background: $white !default;
+$body-font-color: $black !default;
+$body-font-family: 'Nanum Gothic','Helvetica Neue', Helvetica, Roboto, Arial, sans-serif !default;
+$body-antialiased: true !default;
+
+$set-colors: (
+  primary: $primary-color,
+  secondary: $secondary-color,
+  success: $success-color,
+  alert: $alert-color,
+  warning: $warning-color,
+  default: $white
+);
+
+$set-hover-colors: (
+  primary: $primary-hover-color,
+  secondary: $secondary-hover-color,
+  success: $success-hover-color,
+  alert: $alert-hover-color,
+  warning: $warning-hover-color,
+  default: $white-hover-color
+);
+
+$set-active-colors: (
+  primary: $primary-active-color,
+  secondary: $secondary-active-color,
+  success: $success-active-color,
+  alert: $alert-active-color,
+  warning: $warning-active-color,
+  default: $white-active-color
+);
+
+

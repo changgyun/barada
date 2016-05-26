@@ -1,0 +1,365 @@
+////
+/// table
+////
+
+$table-background: transparent  !default;
+$table-color-scale: 5% !default;
+$table-border: 1px solid #c4d0d9 !default;
+$table-padding: 6px 10px !default;
+$table-hover-scale: 2% !default;
+$table-font-size: 12px !default;
+$table-row-hover: #e6edf2 !default;
+$table-row-select: #c9d8e3 !default;
+$table-row-stripe-hover: #23323c !default;
+$table-striped-background: transparent !default;
+$table-stripe: even !default;
+$table-head-background: #f2f6f8 !default;
+$table-foot-background: transparent !default;
+$table-head-font-color: #239ae3 !default;
+$table-body-font-color: #496070 !default;
+$table-body-font-select: #1e2123 !default;
+$table-align: (
+        left: left,
+        center: center,
+        right: right
+) !default;
+$show-header-for-stacked: false !default;
+
+@mixin table-styles($stripe: $table-stripe) {
+  thead,
+  tbody,
+  tfoot {
+    background-color: $table-background;
+    font-size: $table-font-size;
+  }
+  caption {
+    font-weight: $global-weight-normal;
+    padding: $table-padding;
+  }
+  thead,
+  tfoot {
+    border: $table-border;
+    background: $table-head-background;
+    color: $table-head-font-color;
+    font-weight: $global-weight-bold;
+    tr {
+      background: transparent;
+      position: relative;
+      &.selected {
+        .select-checkbox {
+          &:after {
+            font: normal normal normal 13px/1 iconset;
+            content: '\e905';
+            vertical-align: middle;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -7px;
+            margin-top: -5px;
+            line-height: 0.8;
+            transition: all .2s;
+            -ms-transform: scale(0.5,0.5); /* IE 9 */
+            -webkit-transform: scale(0.5,0.5); /* Safari */
+            transform: scale(0.5,0.5);
+          }
+          @media all and (-ms-high-contrast:none)
+          {
+            *::-ms-backdrop, &:after {
+              font: normal normal normal 13px/1 iconset;
+              content: '\e905';
+              vertical-align: middle;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              margin-left: -7px;
+              margin-top: 11px;
+              line-height: 0.8;
+              transition: all .2s;
+              -ms-transform: scale(0.5,0.5); /* IE 9 */
+              -webkit-transform: scale(0.5,0.5); /* Safari */
+              transform: scale(0.5,0.5);
+            } /* IE11 */
+          }
+        }
+      }
+    }
+    th,
+    td {
+      border: $table-border;
+      padding: $table-padding;
+      box-sizing: border-box;
+      font-weight: $global-weight-bold;
+      text-align: map-get($table-align, left);
+      &.left     { text-align: map-get($table-align, left); }
+      &.center    { text-align: map-get($table-align, center); }
+      &.right    { text-align: map-get($table-align, right); }
+      &.select-checkbox {
+        width: 43px!important;
+        position: relative;
+        &:before {
+          display: inline-block;
+          content: '';
+          width: 14px;
+          height: 14px;
+          border: 1px solid #6d93aa;
+          background: #e7eff5;
+          border-radius: 0.3rem;
+          vertical-align: middle;
+          position: relative;
+          left: 5px;
+        }
+      }
+      &.sorting {
+        &:after {
+          content: "\e90c";
+          font-family: 'iconset';
+          opacity: 0.2;
+          display: inline-block;
+          cursor: pointer;
+          margin-left: 10px;
+        }
+        &.sorting_disabled {
+          &:after {
+            opacity: 0;
+          }
+        }
+      }
+      &.sorting_asc {
+        &:after {
+          content: "\e905";
+          font-family: 'iconset';
+          opacity: 1;
+          display: inline-block;
+          margin-left: 10px;
+          cursor: pointer;
+          -ms-transform: scale(0.5,0.5); /* IE 9 */
+          -webkit-transform: scale(0.5,0.5); /* Safari */
+          transform: scale(0.5,0.5);
+        }
+      }
+      &.sorting_desc {
+        &:after {
+          content: "\e90b";
+          font-family: 'iconset';
+          opacity: 1;
+          display: inline-block;
+          margin-left: 10px;
+          cursor: pointer;
+          -ms-transform: scale(0.5,0.5); /* IE 9 */
+          -webkit-transform: scale(0.5,0.5); /* Safari */
+          transform: scale(0.5,0.5);
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      background-color: $table-striped-background;
+      &.selected {
+        .select-checkbox {
+          &:after {
+            font: normal normal normal 13px/1 iconset;
+            content: '\e905';
+            position: absolute;
+            top: 12px;
+            left: 17px;
+            font-size: 10px;
+            line-height: 0.8;
+            transition: all .2s;
+            -ms-transform: scale(0.5,0.5); /* IE 9 */
+            -webkit-transform: scale(0.5,0.5); /* Safari */
+            transform: scale(0.5,0.5);
+          }
+        }
+      }
+    }
+
+    th,
+    td {
+      padding: $table-padding;
+      color: $table-body-font-color;
+      border: $table-border;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      word-wrap:normal;
+      overflow: hidden;
+      a:link, a:hover, a:visited {
+        color: #239ae3;
+      }
+      input[type='text'] {text-align:inherit}
+      &.select {overflow: initial;overflow: visible}
+      &.left     { text-align: map-get($table-align, left); }
+      &.center    { text-align: map-get($table-align, center); }
+      &.right    { text-align: map-get($table-align, right); }
+      &.select-checkbox {
+        position: relative;
+        width: 43px!important;
+        &:before {
+          content: '';
+          position: absolute;
+          left: 15px;
+          top: 8px;
+          width: 14px;
+          height: 14px;
+          border: 1px solid #6d93aa;
+          background: #e7eff5;
+          border-radius: 0.3rem;
+        }
+      }
+    }
+  }
+}
+
+@mixin table(
+$stripe: $table-stripe,
+$nest: false
+) {
+  min-width: 100%;
+  //margin-bottom: $global-margin;
+  border-radius: $global-radius;
+  @include table-styles();
+}
+
+@mixin table-scroll {
+  display: block;
+  width: 100%!important;
+  overflow-x: auto;
+  border-right: $table-border;
+}
+
+@mixin table-hover-row {
+  tbody {
+    tr {
+      &:hover {
+        background-color: $table-row-hover;
+      }
+      &.selected {
+        background-color: $table-row-select;
+        color: $table-body-font-select;
+      }
+    }
+  }
+}
+
+@mixin table-view {
+  tbody {
+    tr {
+      td {
+        overflow: visible;
+      }
+    }
+  }
+}
+
+@mixin table-hover-cell {
+  tbody {
+    tr {
+      td {
+        &:hover {
+          background-color: $table-row-hover;
+        }
+        &.selected {
+          background-color: $table-row-select;
+          color: $table-body-font-select;
+        }
+      }
+    }
+  }
+}
+
+@mixin table-stack($header: $show-header-for-stacked) {
+  @if $header {
+    thead {
+      th:first-child {
+        display: block;
+      }
+
+      th {
+        display: none;
+      }
+    }
+  }
+  @else {
+    thead {
+      display: none;
+    }
+  }
+
+  tfoot {
+    display: none;
+  }
+
+  tr,
+  th,
+  td {
+    display: block;
+  }
+
+  td {
+    border-top: 0;
+  }
+}
+
+@mixin table-small {
+  tbody {
+    tr {
+      td {
+        padding: 6px 10px;
+      }
+    }
+  }
+}
+
+
+@mixin suf-table($nest: false) {
+  table {
+    @include table($nest: $nest);
+  }
+
+ table.stack {
+      @include table-stack;
+  }
+
+  table.scroll {
+    @include table-scroll;
+  }
+
+  table.view {
+    @include table-view;
+  }
+
+  table.hover-row {
+    @include table-hover-row;
+  }
+  table.hover-cell {
+    @include table-hover-cell;
+  }
+  table.small {
+    @include table-small;
+  }
+}
+
+@include suf-table;
+
+.dataTables_scroll {
+  .dataTables_scrollBody {
+    top: -1px;
+    table thead {
+      border: 0;
+      th:after, th:before {
+        display: none;
+      }
+    }
+  }
+}
+
+
+.dataTables_scrollBox {
+  overflow-x: auto;
+  width: 100%;
+  .row {
+    margin: 0;
+    .col-sm-12 {padding: 0;}
+  }
+}

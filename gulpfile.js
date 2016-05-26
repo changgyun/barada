@@ -6,6 +6,7 @@ var gulp = require ('gulp'),
     filter = require("gulp-filter"),
     flatten = require("gulp-flatten"),
     browserSync = require ('browser-sync'),
+    sourcemaps = require('gulp-sourcemaps'),
     reload = browserSync.reload;
 
 var target = {
@@ -23,8 +24,10 @@ var target = {
 gulp.task ('sass', function (){
     gulp.src(target.sassApp)
         //.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sourcemaps.init())
         .pipe(sass({}).on('error', sass.logError))
         .pipe(gulp.dest(target.cssDest))
+        .pipe(sourcemaps.write())
         .pipe(reload({stream:true}));
 });
 

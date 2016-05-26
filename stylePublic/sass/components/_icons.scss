@@ -1,0 +1,233 @@
+////
+/// @icons
+////
+
+$font-path:        "resource/fonts" !default;
+$font-size-base:   14px !default;
+$line-height-base: 1 !default;
+$css-prefix:       "icons" !default;
+$border-color:     #eee !default;
+$inverse:          #fff !default;
+$li-width:         (30em / 14) !default;
+
+@font-face {
+  font-family: 'iconset';
+  src:    url('#{$font-path}/iconset.eot?2ysad1');
+  src:    url('#{$font-path}/iconset.eot?2ysad1#iefix') format('embedded-opentype'),
+  url('#{$font-path}/iconset.ttf?2ysad1') format('truetype'),
+  url('#{$font-path}/iconset.woff?2ysad1') format('woff'),
+  url('#{$font-path}/iconset.svg?2ysad1#iconset') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$icons-nav_left: "\e9000";
+$icons-nav_right: "\e9010";
+$icons-up: "\e90b";
+$icons-down: "\e905";
+$icons-search: "\e909";
+$icons-check: "\e902";
+$icons-hamburger: "\e906";
+$icons-updown: "\e90c";
+$icons-delete: "\e904";
+$icons-date: "\e903";
+$icons-stop: "\e90a";
+$icons-alert: "\e901";
+$icons-deletepan: "\e900";
+
+.#{$css-prefix}-nav_left:before { content: $icons-nav_left; }
+.#{$css-prefix}-nav_right:before { content: $icons-nav_right; }
+.#{$css-prefix}-up:before { content: $icons-up; }
+.#{$css-prefix}-down:before { content: $icons-down; }
+.#{$css-prefix}-search:before { content: $icons-search; }
+.#{$css-prefix}-check:before { content: $icons-check; }
+.#{$css-prefix}-hamburger:before { content: $icons-hamburger; }
+.#{$css-prefix}-updown:before { content: $icons-updown; }
+.#{$css-prefix}-delete:before { content: $icons-delete; }
+.#{$css-prefix}-date:before { content: $icons-date; }
+.#{$css-prefix}-stop:before { content: $icons-stop; }
+.#{$css-prefix}-alert:before { content: $icons-alert; }
+.#{$css-prefix}-deletepan:before { content: $icons-deletepan; }
+
+.#{$css-prefix}-delete {
+  .tree_wrapper & {
+    -ms-transform: scale(0.8,0.8); /* IE 9 */
+    -webkit-transform: scale(0.8,0.8); /* Safari */
+    transform: scale(0.8,0.8);
+    margin: 2px 0 0px 0px;
+  }
+}
+
+.#{$css-prefix}-refresh {
+  background-image: url("resource/svg/refresh.svg");
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  margin: 0px 0 -2px 0px;
+}
+
+.#{$css-prefix}-folder {
+  background-image: url("resource/svg/folder.svg");
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  margin: 0px 0 -3px -3px;
+}
+
+.#{$css-prefix}-folder_open {
+  background-image: url("resource/svg/folder_open.svg");
+  width: 16px;
+  height: 15px;
+  background-repeat: no-repeat;
+  margin: 0px 0 -5px -2px;
+}
+
+.#{$css-prefix}-file {
+  background-image: url("resource/svg/file.svg");
+  width: 16px;
+  height: 14px;
+  background-repeat: no-repeat;
+  margin: 0px 0 -3px 9px;
+}
+
+.#{$css-prefix}-plus {
+  background-color: #7d7f85;
+  border-radius: 50%;
+  background-image: url("resource/svg/add.svg");
+  width: 13px;
+  height: 13px;
+  background-position: 2px 2px;
+  background-size: 9px 9px;
+  background-repeat: no-repeat;
+  &:hover {
+    background-color: #5a5d62;
+  }
+  &:active {
+    background-color: #7d7f85;
+  }
+}
+
+.tree_wrapper {
+  .fa {
+    &.fa-play {
+      color: #7d7f85;
+      &:hover {
+        color: #5a5d62;
+      }
+      &:active {
+        color: #5a5d62;
+      }
+    }
+  }
+}
+
+.#{$css-prefix}-del_s {
+  background-color: #7d7f85;
+  border-radius: 50%;
+  background-image: url("resource/svg/add.svg");
+  width: 13px;
+  height: 13px;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Safari */
+  transform: rotate(45deg);
+  background-position: 2px 2px;
+  background-size: 9px 9px;
+  background-repeat: no-repeat;
+  &:hover {
+    background-color: #5a5d62;
+  }
+  &:active {
+    background-color: #7d7f85;
+  }
+}
+
+.#{$css-prefix}-folder_plus {
+  background-image: url("resource/svg/folder_plus.svg");
+  width: 14px;
+  height: 14px;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  &:hover {
+    background-image: url("resource/svg/folder_plus_over.svg");
+  }
+  &:active {
+    background-image: url("resource/svg/folder_plus.svg");
+  }
+}
+
+
+.#{$css-prefix}-up, .#{$css-prefix}-down {
+  &.icons-rotate-270 {
+    -ms-transform: scale(0.5,0.5) rotate(270deg); /* IE 9 */
+    -webkit-transform: scale(0.5,0.5) rotate(270deg); /* Safari */
+    transform: scale(0.5,0.5) rotate(270deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  }
+  -ms-transform: scale(0.5,0.5); /* IE 9 */
+  -webkit-transform: scale(0.5,0.5); /* Safari */
+  transform: scale(0.5,0.5);
+}
+
+.#{$css-prefix}-hamburger{
+  display: inline-block;
+  font-size: 0.5em;
+  font-family:iconset;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+}
+
+.#{$css-prefix} {
+  display: inline-block;
+  font: normal normal normal #{$font-size-base}/#{$line-height-base} iconset;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.#{$css-prefix}-spin {
+  -webkit-animation: icons-spin 2s infinite linear;
+  animation: icons-spin 2s infinite linear;
+}
+
+@-webkit-keyframes icons-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes icons-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+.#{$css-prefix}-2x { font-size: 2em; }
+.#{$css-prefix}-3x { font-size: 3em; }
+.#{$css-prefix}-4x { font-size: 4em; }
+.#{$css-prefix}-5x { font-size: 5em; }
+.#{$css-prefix}-6x { font-size: 6em; }
+
+
+@mixin icon-rotate($degrees, $rotation) {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=#{$rotation});
+  -webkit-transform: rotate($degrees);
+  -ms-transform: rotate($degrees);
+  transform: rotate($degrees);
+}
+.#{$css-prefix}-rotate-90  { @include icon-rotate(90deg, 1);  }
+.#{$css-prefix}-rotate-180 { @include icon-rotate(180deg, 2); }
+.#{$css-prefix}-rotate-270 { @include icon-rotate(270deg, 3); }
+
