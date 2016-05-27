@@ -1,0 +1,48 @@
+////
+/// title
+////
+
+$title-font: 'Malgun Gothic';
+
+@mixin title-base {
+  font-family: $title-font;
+}
+
+@mixin title-h1 {
+  @include title-base;
+  @include icons-title-h1;
+  font-size: 40px;
+}
+
+@mixin title-h2 {
+  @include title-base;
+  @include icons-title-h2;
+  font-size: 30px;
+  position: relative;
+  &:after {
+    position: absolute;
+    width: 100%;
+    content: '';
+    display: block;
+    border-bottom: 1px #000 solid;
+  }
+}
+
+@mixin title-h3 {
+  @include title-base;
+  @include icons-title-h3;
+  font-size: 20px;
+}
+
+@mixin barada-title {
+  .title-h1 {
+    @include title-h1;
+  }
+  .title-h2 {
+    @include title-h2;
+  }
+  .title-h3 {
+    @include title-h3;
+  }
+}
+@include barada-title;

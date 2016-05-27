@@ -10,6 +10,7 @@ var gulp = require ('gulp'),
     reload = browserSync.reload;
 
 var target = {
+    sassHtml : 'stylePublic/*.html',
     sassSrc : 'stylePublic/sass/**/*.scss',
     sassApp : 'stylePublic/sass/app.scss',
     resourceSrc : 'stylePublic/resource/**/*',
@@ -58,13 +59,22 @@ gulp.task("resource", function() {
 
 });
 
+
+gulp.task("html", function() {
+    gulp
+        .src(target.sassHtml)
+        .pipe(gulp.dest(target.dest));
+
+});
+
 gulp.task("clean", function() {
     return gulp
         .src([target.dest], {read: false})
         .pipe(clean({force: true}));
 });
 
-gulp.task('default', ['resource', 'vendor', 'sass'], function(){
+gulp.task('default', ['html', 'resource', 'vendor', 'sass'], function(){
     browserSync({server: target.dest});
     gulp.watch(target.sassSrc, ['sass']);
+    gulp.watch(target.sassHtml, ['html']);
 });

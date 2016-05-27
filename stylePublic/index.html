@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>template</title>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+        body { margin:0; }
+        h1 {  background: #6a6c6a; padding:10px 20px; margin:0; font-weight: bold; font-size: 13px; color:#fff;}
+        h2 {  background: #e3e3e3; padding:10px 10px; margin:0; font-weight: bold; font-size: 18px;}
+        h3 {  padding:10px 10px; margin:20px 0 0 0; font-weight: bold; font-size: 13px;}
+        td span, .bage { display:inline-block; color:white; font-size:11px; padding:2px 5px; border-radius:3px; }
+        span.backlog {background:#999;}
+        span.ready {background:#8a73ff;}
+        span.progress {background:#1fc231;}
+        span.done {background:#ff5144;}
+        span.dialog {background:#ff7701;}
+        span.undefined {display:none}
+        .guide_c {padding: 20px;}
+        .view {padding: 20px; border: 1px #e3e3e3 solid; margin-left: 10px;}
+        nav {position: fixed;top:50px;right:10px;background-color: #e3e3e3;padding: 20px}
+        nav li {list-style: none;}
+        nav a {padding: 10px;display: block}
+    </style>
+</head>
+<body>
+<h1>Template
+    <div style="float:right">
+        <span class="bage backlog">backlog</span>
+        <span class="bage ready">ready</span>
+        <span class="bage progress">progress</span>
+        <span class="bage done">done</span>
+    </div>
+</h1>
+
+<nav>
+    <ul>
+        <li><a href="#title">title</a></li>
+        <li><a href="#breadcrumb">breadcrumb</a></li>
+        <li><a href="#tabs">tabs</a></li>
+    </ul>
+</nav>
+
+<div class="guide_c" id="title">
+    <h2>Title</h2>
+
+    <h3>header Title</h3>
+    <div class="view">
+
+        <div class="title-h1">연금종류안내</div>
+
+    </div>
+
+    <h3>sub Title</h3>
+    <div class="view">
+
+        <div class="title-h2">연금종류안내</div>
+
+    </div>
+
+    <h3>contents Title</h3>
+    <div class="view">
+
+        <div class="title-h3">연금종류안내</div>
+
+    </div>
+</div>
+
+<div class="guide_c" id="breadcrumb">
+    <h2>Breadcrumb</h2>
+
+    <h3>breadcrumb line</h3>
+    <div class="view">
+
+        <div class="breadcrumb line">
+            <a href class="active">연금종류안내</a>
+            <a href>연금의 감액요소</a>
+            <a href>재심청구제도</a>
+        </div>
+
+    </div>
+
+    <h3>breadcrumb Box</h3>
+    <div class="view">
+
+        <ol class="breadcrumb box">
+            <li>퇴직급여</li>
+            <li>유족급여</li>
+            <li>재해보상급여</li>
+            <li>퇴직수당</li>
+        </ol>
+
+    </div>
+</div>
+
+<div class="guide_c" id="tabs">
+    <h2>Tabs</h2>
+
+    <h3>breadcrumb line</h3>
+    <div class="view">
+
+        <div class="breadcrumb line">
+            <a href class="active">연금종류안내</a>
+            <a href>연금의 감액요소</a>
+            <a href>재심청구제도</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

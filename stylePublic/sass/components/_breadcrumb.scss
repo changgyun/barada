@@ -1,0 +1,92 @@
+////
+/// Breadcrumb
+////
+
+$breadcrumb-base-color: #000;
+$breadcrumb-active-color: blue;
+$breadcrumb-box-bg: #e3e3e3;
+$breadcrumb-box-border: 1px #000 dashed;
+
+@mixin breadcrumb-base {
+  font-family: $title-font;
+}
+
+@mixin breadcrumb-line {
+  @include breadcrumb-base;
+  a {
+    text-decoration: none;
+    color: $breadcrumb-base-color;
+    &:last-child:after {display: none}
+    &:after {
+      font-size: 8px;
+      content:'/';
+      display: inline-block;
+      padding: 0 5px 0 10px;
+      vertical-align: bottom;
+      line-height: 19px;
+    }
+    &.active {
+      @include icons-breadcrumb-line;
+      color: $breadcrumb-active-color;
+    }
+  }
+}
+
+@mixin breadcrumb-box {
+  @include breadcrumb-base;
+  display: flex;
+  li {
+    width: 100%;
+    text-align: center;
+    border-radius: 40px;
+    border: $breadcrumb-box-border;
+    background-color: $breadcrumb-box-bg;
+    margin-right: 30px;
+    padding: 20px 40px;
+    position: relative;
+    &:last-child {
+      margin-right: 0;
+      &:after {display: none;}
+    }
+    &:nth-child(1) {&:before{content:'01';}}
+    &:nth-child(2) {&:before{content:'02';}}
+    &:nth-child(3) {&:before{content:'03';}}
+    &:nth-child(4) {&:before{content:'04';}}
+    &:before {
+      position: absolute;
+      top:50%;
+      left:10px;
+      font-size: 16px;
+      color:#fff;
+      display: inline-block;
+      width:40px;
+      height:40px;
+      margin-top: -20px;
+      line-height: 40px;
+      border-radius: 50%;
+      background-color: #000;
+    }
+    &:after {
+      position: absolute;
+      right:-27px;
+      font-size: 40px;
+      content:'+';
+      display: inline-block;
+      vertical-align: bottom;
+      line-height: 19px;
+    }
+  }
+}
+
+@mixin barada-breadcrumb {
+
+  .breadcrumb.line {
+    @include breadcrumb-line;
+  }
+
+  .breadcrumb.box {
+    @include breadcrumb-box;
+  }
+
+}
+@include barada-breadcrumb;
