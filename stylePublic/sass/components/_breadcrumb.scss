@@ -13,9 +13,8 @@ $breadcrumb-box-border: 1px #000 dashed;
 
 @mixin breadcrumb-line {
   @include breadcrumb-base;
-  a {
-    text-decoration: none;
-    color: $breadcrumb-base-color;
+  li {
+    display: inline-block;
     &:last-child:after {display: none}
     &:after {
       font-size: 8px;
@@ -25,9 +24,13 @@ $breadcrumb-box-border: 1px #000 dashed;
       vertical-align: bottom;
       line-height: 19px;
     }
-    &.active {
-      @include icons-breadcrumb-line;
-      color: $breadcrumb-active-color;
+    a {
+      text-decoration: none;
+      color: $breadcrumb-base-color;
+      &.active {
+        @include icons-breadcrumb-line;
+        color: $breadcrumb-active-color;
+      }
     }
   }
 }

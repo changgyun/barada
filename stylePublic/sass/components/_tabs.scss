@@ -10,14 +10,9 @@ $tab-color: #7097af !default;
 $tab-color-hover: #4e7891 !default;
 $tab-item-background: #e7ebee !default;
 $tab-background-active: #869ca9 !default;
-$tab-border: $light-gray !default;
-$tab-item-color: foreground(#e7ebee, $primary-color) !default;
 $tab-item-background-hover: #cfd7dd !default;
 $tab-item-padding: .6rem 1.3rem !default;
-$tab-expand-max: 6 !default;
-$tab-content-background: $white !default;
 $tab-content-border: #869ca9 !default;
-$tab-content-color: foreground($tab-background, $primary-color) !default;
 $tab-content-padding: 1rem !default;
 
 @mixin tabs-container {
@@ -28,31 +23,26 @@ $tab-content-padding: 1rem !default;
   border-bottom: 1px solid $tab-content-border;
   padding: 0;
   font-size: $tab-font-size;
-}
-
-@mixin tabs-container-vertical {
-  > li {
-    width: auto;
-    float: none;
-    display: block;
-  }
+  display: flex;
 }
 
 @mixin tabs-title {
-  float: #{$global-left};
   margin-left: 2px;
+  width:100%;
   &:first-child  {
     margin: 0;
   }
   > a {
     display: block;
+    width:100%;
     padding: $tab-item-padding;
+    text-align: center;
     line-height: 1;
     color: $tab-color;
     background: $tab-item-background;
     text-decoration: none;
     font-weight: $global-weight-bold;
-
+    box-sizing: border-box;
     &:hover {
       background: $tab-item-background-hover;
       color: $tab-color-hover;
@@ -69,18 +59,6 @@ $tab-content-padding: 1rem !default;
   }
 }
 
-@mixin tabs-content {
-  background: $tab-content-background;
-  transition: all 0.5s ease;
-  border: 1px solid $tab-content-border;
-  border-top: 0;
-}
-
-@mixin tabs-content-vertical {
-  border: 1px solid $tab-content-border;
-  border-#{$global-left}: 0;
-}
-
 @mixin tabs-panel {
   display: none;
   padding: $tab-content-padding;
@@ -91,51 +69,13 @@ $tab-content-padding: 1rem !default;
 }
 
 
-@mixin suf-tabs {
+@mixin barada-tabs {
   .tabs {
     @include tabs-container;
   }
 
-  // Vertical
-  .tabs.vertical {
-    @include tabs-container-vertical;
-  }
-
-  // Simple
-  .tabs.simple {
-    > li > a {
-      padding: 0;
-
-      &:hover {
-        background: transparent;
-      }
-    }
-  }
-
-  // Primary color
-  .tabs.primary {
-    background: $primary-color;
-
-    > li > a {
-      color: foreground($primary-color);
-
-      &:hover,
-      &:focus {
-        background: smart-scale($primary-color);
-      }
-    }
-  }
-
   .tabs-title {
     @include tabs-title;
-  }
-
-  .tabs-content {
-    @include tabs-content;
-  }
-
-  .tabs-content.vertical {
-    @include tabs-content-vertical;
   }
 
   .tabs-panel {
@@ -143,4 +83,4 @@ $tab-content-padding: 1rem !default;
   }
 }
 
-@include suf-tabs;
+@include barada-tabs;

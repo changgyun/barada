@@ -1,0 +1,50 @@
+////
+/// boxlist
+////
+
+$title-font: 'Malgun Gothic';
+$boxlist-dt-color: blue;
+$boxlist-dt-width: 25%;
+$boxlist-dd-width: 100%;
+$boxlist-d-pad: 10px 10px;
+$boxlist-radius: 10px;
+$boxlist-border: 1px #000 solid;
+$boxlist-bottom-border: 1px #000 solid;
+$boxlist-padding: 10px;
+
+@mixin boxlist-base {
+  font-family: $title-font;
+  border-radius: $boxlist-radius;
+  border: $boxlist-border;
+  padding: $boxlist-padding;
+}
+
+@mixin boxlist-default {
+  @include boxlist-base;
+  dl {
+    display: flex;
+    &:last-child {
+      dt, dd {border-bottom: 0
+      }
+    }
+    dt {
+      width: $boxlist-dt-width;
+      color:$boxlist-dt-color;
+      padding: $boxlist-d-pad;
+      border-bottom: $boxlist-bottom-border;
+    }
+    dd {
+      width: $boxlist-dd-width;
+      padding: $boxlist-d-pad;
+      border-bottom: $boxlist-bottom-border;
+    }
+  }
+}
+
+@mixin barada-boxlist {
+  .boxlist {
+    @include boxlist-default;
+  }
+}
+
+@include barada-boxlist;
