@@ -19,9 +19,9 @@
         span.undefined {display:none}
         .guide_c {padding: 20px;}
         .view {padding: 20px; border: 1px #e3e3e3 solid; margin-left: 10px;}
-        nav {position: fixed;top:50px;right:10px;background-color: #e3e3e3;padding: 20px}
+        nav {position: fixed;top:50px;right:20px;background-color: #000;padding: 10px}
         nav li {list-style: none;}
-        nav a {padding: 10px;display: block}
+        nav a {padding: 10px;display: block;color:#fff;text-decoration: none;font-size: 11px}
     </style>
 </head>
 <body>
@@ -39,6 +39,7 @@
         <li><a href="#title">title</a></li>
         <li><a href="#breadcrumb">breadcrumb</a></li>
         <li><a href="#tabs">tabs</a></li>
+        <li><a href="#boxpanel">boxpanel</a></li>
     </ul>
 </nav>
 
@@ -73,11 +74,11 @@
     <h3>breadcrumb line</h3>
     <div class="view">
 
-        <div class="breadcrumb line">
-            <a href class="active">연금종류안내</a>
-            <a href>연금의 감액요소</a>
-            <a href>재심청구제도</a>
-        </div>
+        <ul class="breadcrumb line">
+            <li><a href class="active">연금종류안내</a></li>
+            <li><a href>연금의 감액요소</a></li>
+            <li><a href>재심청구제도</a></li>
+        </ul>
 
     </div>
 
@@ -96,18 +97,47 @@
 
 <div class="guide_c" id="tabs">
     <h2>Tabs</h2>
-
-    <h3>breadcrumb line</h3>
+    <h3>default tabs</h3>
     <div class="view">
 
-        <div class="breadcrumb line">
-            <a href class="active">연금종류안내</a>
-            <a href>연금의 감액요소</a>
-            <a href>재심청구제도</a>
+        <ul class="tabs">
+            <li class="tabs-title"><a href aria-selected='true'>전역사유별 연금 급여</a></li>
+            <li class="tabs-title"><a href>긍여의 종류(13.7.1 이후 임관자)</a></li>
+            <li class="tabs-title"><a href>급여의 종류(13.7.1 이후 임관자)</a></li>
+        </ul>
+
+    </div>
+</div>
+
+
+<div class="guide_c" id="boxpanel">
+    <h2>Box panel</h2>
+    <h3>default Box panel</h3>
+    <div class="view">
+
+        <div class="boxpanel">
+            <dl>
+                <dt>전역사유별 연금 급여</dt>
+                <dd>긍여의 종류(13.7.1 이후 임관자)</dd>
+            </dl>
+            <dl>
+                <dt>전역사유별 연금 급여</dt>
+                <dd>긍여의 종류(13.7.1 이후 임관자)</dd>
+            </dl>
+            <dl>
+                <dt>전역사유별 연금 급여</dt>
+                <dd>긍여의 종류(13.7.1 이후 임관자)</dd>
+            </dl>
+            <dl>
+                <dt>전역사유별 연금 급여</dt>
+                <dd>
+                    긍여의 종류(13.7.1 이후 임관자)긍여의 종류(13.7.1 이후 임관자)긍여의 종류(13.7.1 이후 임관자)긍
+                    여의 종류(13.7.1 이후 임관자)긍여의 종류(13.7.1 이후 임관자)긍여의 종류(13.7.1 이후 임관자)
+                </dd>
+            </dl>
         </div>
 
     </div>
-
 </div>
 
 

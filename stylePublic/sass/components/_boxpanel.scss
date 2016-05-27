@@ -1,0 +1,50 @@
+////
+/// boxpanel
+////
+
+$title-font: 'Malgun Gothic';
+$boxpanel-dt-color: blue;
+$boxpanel-dt-width: 25%;
+$boxpanel-dd-width: 100%;
+$boxpanel-d-pad: 10px 10px;
+$boxpanel-radius: 10px;
+$boxpanel-border: 1px #000 solid;
+$boxpanel-bottom-border: 1px #000 solid;
+$boxpanel-padding: 10px;
+
+@mixin boxpanel-base {
+  font-family: $title-font;
+  border-radius: $boxpanel-radius;
+  border: $boxpanel-border;
+  padding: $boxpanel-padding;
+}
+
+@mixin boxpanel-default {
+  @include boxpanel-base;
+  dl {
+    display: flex;
+    &:last-child {
+      dt, dd {border-bottom: 0
+      }
+    }
+    dt {
+      width: $boxpanel-dt-width;
+      color:$boxpanel-dt-color;
+      padding: $boxpanel-d-pad;
+      border-bottom: $boxpanel-bottom-border;
+    }
+    dd {
+      width: $boxpanel-dd-width;
+      padding: $boxpanel-d-pad;
+      border-bottom: $boxpanel-bottom-border;
+    }
+  }
+}
+
+@mixin barada-boxpanel {
+  .boxpanel {
+    @include boxpanel-default;
+  }
+}
+
+@include barada-boxpanel;

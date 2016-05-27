@@ -73,8 +73,11 @@ gulp.task("clean", function() {
         .pipe(clean({force: true}));
 });
 
+gulp.task('html-watch', ['html'], reload);
+
 gulp.task('default', ['html', 'resource', 'vendor', 'sass'], function(){
     browserSync({server: target.dest});
     gulp.watch(target.sassSrc, ['sass']);
-    gulp.watch(target.sassHtml, ['html']);
+    gulp.watch(target.sassHtml, ['html-watch']);
+
 });
